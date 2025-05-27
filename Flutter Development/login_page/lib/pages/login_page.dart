@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:login_page/widgets/rounded_circular_button.dart';
 import 'package:login_page/widgets/rounded_text_form_field.dart';
 
 class LoginPage extends StatelessWidget {
@@ -38,7 +39,7 @@ class LoginPage extends StatelessWidget {
         children: [
         const Padding(
           padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
-          child: Text("Sign In",
+          child: Text("MizigoApp",
           style: TextStyle(color:  Colors.black, fontWeight: FontWeight.w600, fontSize: 30)),
         ),
         Image.asset("assets/images/images.png",
@@ -59,9 +60,12 @@ class LoginPage extends StatelessWidget {
             vertical: 25,
             ),
           child: Column(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             _formField(context),
-             _bottomButton(context),
+             _bottomButtons(context),
           ],
           ),
         )
@@ -96,13 +100,29 @@ class LoginPage extends StatelessWidget {
     );
   }
 
-  Widget _bottomButton(BuildContext context) {
+  Widget _bottomButtons(BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.max,
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        SizedBox()
+        SizedBox(
+          width: MediaQuery.of(context).size.width * 0.80,
+          height: MediaQuery.of(context).size.height * 0.06,
+          child: const RoundedCircularButton(text: "Sign In"),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(
+            top: 20,
+            bottom: 30,
+            ),
+          child: Text("I Don't Have an Account",
+          style: TextStyle(
+            fontSize: 15,
+            fontWeight: FontWeight.w600,
+            color: Colors.blue),
+          ),
+        ),
       ],
     );
   }
