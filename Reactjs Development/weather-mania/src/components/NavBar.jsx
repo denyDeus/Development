@@ -1,8 +1,16 @@
-import { useState } from "react"
+import { useState } from "react";
 
- export default function NavBar() {
+ export default function NavBar(props) {
 
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState("")
+
+  function handleKeyDown(e) {
+    if (e.key === "Enter") {
+      if (searchTerm.length > 0) {
+        props.setLocation(searchTerm);
+      }
+    }
+  }
 
   function handleOnChange(e) {
     setSearchTerm(e.target.value);
@@ -16,6 +24,7 @@ import { useState } from "react"
     <div className="form-control">
       <input
       value={searchTerm}
+      onKeyDown={handleKeyDown}
       onChange={(e) => handleOnChange(e)}
       type="text"
       placeholder="Search for a city..."
