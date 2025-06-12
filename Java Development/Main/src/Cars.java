@@ -5,6 +5,11 @@ public class Cars {
     String color = "Black";
     int speed = 0;
 
+    public void setColor(){
+        System.out.println("color is "+ " red");
+    }
+
+
     void describe() {
         System.out.println("Car type: " + type);
         System.out.println("Car model: " + model);
