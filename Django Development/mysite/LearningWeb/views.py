@@ -40,9 +40,14 @@ def create(response):
             n = form.cleaned_data["name"]
             t = ToDoList(name=n)
             t.save()
+            response.user.todolist_set(t)
 
         return HttpResponseRedirect("/%i" %t.id)
 
     else:
         form = CreateNewList()
+
     return render(response, "LearningWeb/create.html", {"form":form})
+
+def view(response):
+    return render(response, "LearningWeb/view.html", {{}})   
